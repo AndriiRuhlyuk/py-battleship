@@ -81,7 +81,7 @@ class Battleship:
 
         self._validate_field()
 
-    def _validate_field(self) -> Exception:
+    def _validate_field(self) -> bool:
         if len(self.ships) != 10:
             raise ValueError(
                 f"Total number of the ships should be 10,"
@@ -134,7 +134,7 @@ class Battleship:
         for row in range(self.size):
             for coll in range(self.size):
                 if (row, coll) in self.field:
-                    ship = self.field[row, coll]
+                    ship = self.field[(row, coll)]
                     deck = ship.get_deck(row, coll)
                     if ship.is_drowned:
                         print("x", end="     ")
